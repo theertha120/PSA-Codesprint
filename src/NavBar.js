@@ -1,7 +1,14 @@
 import { Box, Flex, Text, Link, Button } from '@chakra-ui/react';
 import { FaHome } from 'react-icons/fa';  // Import the Home icon from react-icons
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const NavBar = () => {
+    const navigate = useNavigate(); // Get the navigate function
+
+    const handleNavigation = (path) => {
+        navigate(path); // Use navigate to change routes
+    };
+
     return (
         <Box
             backgroundImage="linear-gradient(90deg, #3f2182 0%, #4B0082 100%)" // Gradient background
@@ -17,16 +24,16 @@ const NavBar = () => {
 
                 {/* Spaced Links */}
                 <Flex alignItems="center" spacing={6}> {/* Ensuring all items are aligned */}
-                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins">
+                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/skill-dock')}>
                         Skill Dock
                     </Link>
-                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins">
+                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/career-voyage')}>
                         Career Trajectory
                     </Link>
-                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins">
+                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/learning')}>
                         Learning Dashboard
                     </Link>
-                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins">
+                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/gen-ex')}>
                         Generational Engagement
                     </Link>
 
@@ -37,6 +44,7 @@ const NavBar = () => {
                         backgroundColor="white" // Optional: to match the theme
                         variant="solid"
                         opacity={.8}
+                        onClick={() => handleNavigation('/home')}
                     >
                         Home
                     </Button>
