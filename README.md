@@ -20,3 +20,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+## Setup
+
+For testing you can use the provided accounts or sign up using any email.
+
+email: roshni@gmail.com
+password: 123456
