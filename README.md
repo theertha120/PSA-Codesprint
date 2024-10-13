@@ -25,5 +25,5 @@ You may also see any lint errors in the console.
 
 For testing you can use the provided accounts or sign up using any email.
 
-email: roshni@gmail.com
-password: 123456
+**email: roshni@gmail.com**\
+**password: 123456**
