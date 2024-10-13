@@ -8,8 +8,11 @@ import {
     Heading,
     Text,
     SimpleGrid,
+    Image, // Import the Image component
 } from "@chakra-ui/react";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import NavBar from "./NavBar";
+import { FiLogOut, FiAward, FiTrendingUp, FiBookOpen, FiUsers } from "react-icons/fi"; // Import icons
 
 
 // Define the main features with corresponding images from the public folder
@@ -18,35 +21,37 @@ const features = [
         title: "Skill Dock",
         description:
             "Employees earn verified badges for new skills. Skill Wallet using blockchain for transparency.",
-        image: "/1.png", // Image path in the public folder
-        buttonLabel: "Access Skills", // New button label
+        image: "skills.png", // Image path in the public folder
+        buttonLabel: "Access Skills",
         buttonRoute: "/skill-dock",
+        icon: <FiAward size={40} />,
     },
     {
-        title: "Career Trajectory",
+        title: "Career Voyage",
         description:
             "Simulate various career paths and visualize potential career outcomes based on skills.",
-        image: "/2.png", // Image path in the public folder
-        buttonLabel: "View Career Paths", // New button label
+        image: "career.webp", // Image path in the public folder
+        buttonLabel: "View Career Paths",
         buttonRoute: "/career-voyage",
+        icon: <FiTrendingUp size={40} />,
     },
     {
-        title: "Learning Dashboard",
+        title: "Development Dashboard",
         description:
             "Managers track engagement across generations and skill levels. AI recommends formats based on preferences.",
-        image: "/3.png", // Image path in the public folder
-        buttonLabel: "Explore Courses", // New button label
+        image: "development.png", // Image path in the public folder
+        buttonLabel: "Explore Courses",
         buttonRoute: "/learning",
-
+        icon: <FiBookOpen size={40} />,
     },
     {
-        title: "Generational Engagement",
+        title: "Mentorship Hub",
         description:
             "Resources for younger interns and feedback tools for managers, fostering skill-sharing across generations.",
-        image: "/4.png", // Image path in the public folder
-        buttonLabel: "Engage Now", // New button label
+        image: "mentor.jpg", // Image path in the public folder
+        buttonLabel: "Engage Now",
         buttonRoute: "/gen-ex",
-
+        icon: <FiUsers size={40} />,
     },
 ];
 
@@ -56,65 +61,88 @@ const HomePage = () => {
     const handleNavigation = (path) => {
         navigate(path); // Use navigate to change routes
     };
+
+    const handleLogout = () => {
+        // Add any logout logic here (e.g., clearing user session)
+        // Then navigate to the login page or another route
+        navigate('/'); // Navigate to the login page
+    };
+
     return (
-        <Container maxW="container.xl" mt={5} position="relative">
-            {/* Log Out Button Positioned Higher */}
-            <Button
-                colorScheme="purple" // Use a Chakra color scheme
-                position="absolute"
-                top={5}
-                right={10}
-                variant="solid"
-            >
-                Log Out
-            </Button>
+        <>
+            <NavBar />
+            <Container maxW="container.xl" mt={1} position="relative">
 
-            {/* Welcome message positioned lower */}
-            <Heading as="h4" textAlign="center" mt={24} mb={4}>
-                Welcome, Nancy Drew!
-            </Heading>
+                {/* Log Out Button Positioned Higher */}
+                <Button
+                    colorScheme="darkPurple"
+                    position="absolute"
+                    top={1}
+                    right={5}
+                    variant="solid"
+                    borderRadius="md"
+                    boxShadow="md"
+                    _hover={{
+                        bg: "purple.800",
+                        transform: "scale(1.05)",
+                        transition: "all 0.2s ease-in-out",
+                    }}
+                    leftIcon={<FiLogOut />}
+                    onClick={handleLogout}
+                >
+                    Log Out
+                </Button>
 
-            <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={6} mt={8}>
-                {features.map((feature, index) => (
-                    <Box
-                        key={index}
-                        p={4}
-                        textAlign="center"
-                        borderWidth="1px"
-                        borderRadius="lg"
-                        height="350px" // Set a fixed height for each feature box
-                        display="flex"
-                        flexDirection="column"
-                        justifyContent="space-between"
-                        bg="#f5f5f5"
-                    >
-                        <Avatar
-                            alt={feature.title}
-                            src={feature.image} // Image path from public folder
-                            size="lg" // Adjust size as needed
-                            mx="auto" // Center the image horizontally
-                            mb={2} // Margin bottom for spacing
-                        />
-                        <Text fontSize="xl" fontWeight="bold" mb={1}>
-                            {feature.title}
-                        </Text>
-                        <Text fontSize="md" mb={2}>
-                            {feature.description}
-                        </Text>
+                {/* Welcome message positioned lower */}
+                <Heading as="h4" textAlign="center" mt={12} mb={4}>
+                    Welcome, Nancy Drew!
+                </Heading>
 
-                        {/* Button inside the feature box with updated label */}
-                        <Button
-                            colorScheme="teal" // Use a Chakra color scheme
-                            variant="outline" // Use outlined style for small button
-                            width="100%" // Align the button to take the full width
-                            onClick={() => handleNavigation(feature.buttonRoute)}
+                <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={6} mt={8}>
+                    {features.map((feature, index) => (
+                        <Box
+                            key={index}
+                            p={4}
+                            textAlign="center"
+                            borderWidth="1px"
+                            borderRadius="lg"
+                            height="450px"
+                            display="flex"
+                            flexDirection="column"
+                            justifyContent="space-between"
+                            bg="#f5f5f5"
+                            boxShadow="md"
+
                         >
-                            {feature.buttonLabel} {/* Use the new button label from feature object */}
-                        </Button>
-                    </Box>
-                ))}
-            </SimpleGrid>
-        </Container>
+                            {/* Add Image for each feature */}
+                            <Image
+                                src={feature.image} // Source from feature object
+                                alt={feature.title} // Alt text for accessibility
+                                height={"200px"}
+                                mx="auto" // Center the image
+                                mb={2} // Margin below the image
+                            />
+                            <Text fontSize="xl" fontWeight="bold" mb={1}>
+                                {feature.title}
+                            </Text>
+                            <Text fontSize="md" mb={2}>
+                                {feature.description}
+                            </Text>
+
+                            {/* Button inside the feature box */}
+                            <Button
+                                colorScheme="darkPurple"
+                                variant="outline"
+                                width="100%"
+                                onClick={() => handleNavigation(feature.buttonRoute)}
+                            >
+                                {feature.buttonLabel}
+                            </Button>
+                        </Box>
+                    ))}
+                </SimpleGrid>
+            </Container>
+        </>
     );
 };
 

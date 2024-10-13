@@ -5,21 +5,21 @@ import { Grid, Box, Text, Button, Image } from "@chakra-ui/react";
 const courses = [
     {
         title: "Course 1",
-        image: "Capture.JPG", // Replace with your actual image path
+        image: "Capture.JPEG", // Replace with your actual image path
         completionTime: "2 weeks",
         preparedBy: "Instructor A",
         description: "This course covers the fundamentals of XYZ.",
     },
     {
         title: "Course 2",
-        image: "Capture1.JPG", // Replace with your actual image path
+        image: "Capture1.JPEG", // Replace with your actual image path
         completionTime: "4 weeks",
         preparedBy: "Instructor B",
         description: "An in-depth look at ABC concepts.",
     },
     {
         title: "Course 3",
-        image: "Capture3.JPG", // Replace with your actual image path
+        image: "Capture3.JPEG", // Replace with your actual image path
         completionTime: "3 weeks",
         preparedBy: "Instructor C",
         description: "Explore advanced topics in XYZ.",
@@ -54,6 +54,8 @@ const CourseDetails = ({ onBack }) => {
                             boxSize="150px"
                             borderRadius="10px"
                             marginBottom="10px"
+                            justifyContent={"center"}
+                            mx="auto"
                         />
                         <Text fontSize="lg" fontWeight="bold" mb={2}>
                             {course.title}
@@ -64,7 +66,7 @@ const CourseDetails = ({ onBack }) => {
                             {course.description}
                         </Text>
                         <Button
-                            colorScheme="teal"
+                            colorScheme="darkPurple"
                             variant="solid"
                         >
                             Enroll Now
@@ -72,7 +74,7 @@ const CourseDetails = ({ onBack }) => {
                     </Box>
                 ))}
             </Grid>
-            <Button onClick={onBack} marginTop="20px" colorScheme="teal">
+            <Button onClick={onBack} marginTop="50px" colorScheme="darkPurple">
                 Back to Dashboard
             </Button>
         </Box>

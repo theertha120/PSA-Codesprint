@@ -28,13 +28,13 @@ const NavBar = () => {
                         Skill Dock
                     </Link>
                     <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/career-voyage')}>
-                        Career Trajectory
+                        Career Voyage
                     </Link>
                     <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/learning')}>
-                        Learning Dashboard
+                        Development Dashboard
                     </Link>
                     <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/gen-ex')}>
-                        Generational Engagement
+                        Mentorship Hub
                     </Link>
 
                     {/* Home Button with Icon */}
