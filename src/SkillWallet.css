@@ -1,0 +1,55 @@
+.skill-wallet {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.profile-section {
+    margin-bottom: 20px;
+}
+
+.skills-section ul,
+.certificates-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.skill-badge img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.verified-tag {
+    background-color: #4caf50;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.badge-grid {
+    display: flex;
+    gap: 15px;
+}
+
+.badge-item img {
+    width: 60px;
+    height: 60px;
+}
+
+.badge-item p {
+    text-align: center;
+    margin-top: 5px;
+}
