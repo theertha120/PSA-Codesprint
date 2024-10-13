@@ -21,15 +21,13 @@ const AppointmentScheduler = () => {
             statuses: { Sunday: 'Busy', Monday: 'Busy', Tuesday: 'Busy', Wednesday: 'Available', Thursday: 'Busy', Friday: 'Available', Saturday: 'Busy', },
         },
         {
-            time: '12am',
+            time: '12pm',
             statuses: { Sunday: 'Available', Monday: 'Busy', Tuesday: 'Busy', Wednesday: 'Busy', Thursday: 'Busy', Friday: 'Available', Saturday: 'Busy', },
         },
     ];
 
     const [selectedCells, setSelectedCells] = useState({});
-    const [confirmedTimes, setConfirmedTimes] = useState<string[]>([]);
-    const [tableVisible, setTableVisible] = useState(true);
-
+    
     const handleCellClick = (time, day) => {
         setSelectedCells((prev) => ({
             ...prev,
@@ -78,7 +76,12 @@ const AppointmentScheduler = () => {
                                     ? 'green.100' 
                                     : 'red.100'
                             }
-                            onClick={() => handleCellClick(slot.time, day)}
+                            onClick={() => {
+                                // Only allow clicking on available cells
+                                if (status === 'Available') {
+                                    handleCellClick(slot.time, day);
+                                }
+                            }}
                             cursor="pointer" // Add pointer cursor
                         >
                             <Text color={status === 'Available' ? 'green.500' : 'red.500'}>

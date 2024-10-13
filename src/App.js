@@ -7,6 +7,10 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import CareerVoyage from './CareerVoyage';
 import GenerationalEngagement from './generationalEngagement.tsx';
+import Book1 from './Book1.js';
+import QuizCards from './QuizCards.js';
+import VideoCards from './VideoCards.js';
+import MenteeChat from './MenteeChat.js';
 import LearningDashboard from './LearningDashboard.js';
 import HomePage from './HomePage.js';
 import Login from './Login.js';
@@ -63,6 +67,10 @@ function App() {
             <Route path="/skill-dock" element={<SkillWallet />} />
             <Route path="/career-voyage" element={<CareerVoyage />} />
             <Route path="/gen-ex" element={<GenerationalEngagement />} />
+            <Route path="/gen-ex/book1" element={<Book1 />} />
+            <Route path="/gen-ex/quizcards" element={<QuizCards />} />
+            <Route path="/gen-ex/videos" element={<VideoCards />} />
+            <Route path="/chat/:menteeName" element={<MenteeChat />} />
             <Route path="/learning" element={<LearningDashboard />} />
           </Routes>
         </Router>
@@ -72,3 +80,4 @@ function App() {
 }
 
 export default App;
+

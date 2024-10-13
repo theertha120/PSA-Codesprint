@@ -63,7 +63,7 @@ const MentorMatchForm = () => {
             </Select>
           </FormControl>
 
-          <Button type="submit" colorScheme="teal">Submit</Button>
+          <Button type="submit" colorScheme="purple">Submit</Button>
         </VStack>
       </form>
     </Box>
