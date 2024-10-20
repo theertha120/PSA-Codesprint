@@ -1,4 +1,4 @@
-# The SPRiNTS
+# The SPRiNTs
 
 * Marwah Nikita 
 * Aravind Theertha
@@ -13,7 +13,6 @@ In the project directory, you can run:
 
 Installs packages and their dependencies required for the project.
 
->>>>>>> nikita-first-committ
 ### `npm start`
 
 Runs the app in the development mode.\
