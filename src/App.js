@@ -5,15 +5,16 @@ import NavBar from './NavBar';
 import '@fontsource/poppins';
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import CareerVoyage from './CareerVoyage';
 import GenerationalEngagement from './generationalEngagement.tsx';
 import Book1 from './Book1.js';
 import QuizCards from './QuizCards.js';
 import VideoCards from './VideoCards.js';
-import MenteeChat from './MenteeChat.js';
-import LearningDashboard from './LearningDashboard.js';
 import HomePage from './HomePage.js';
 import Login from './Login.js';
+import CareerPaths from './CareerPaths.js';
+import Learning from './Learning.js';
+import Mentorship from './Mentorship.js';
+import Chatbot from './Chatbot.js';
 
 const theme = extendTheme({
   fonts: {
@@ -64,6 +65,7 @@ function App() {
 
             {/* Render other routes */}
             <Route path="/home" element={<HomePage />} />
+            {/*
             <Route path="/skill-dock" element={<SkillWallet />} />
             <Route path="/career-voyage" element={<CareerVoyage />} />
             <Route path="/gen-ex" element={<GenerationalEngagement />} />
@@ -72,6 +74,11 @@ function App() {
             <Route path="/gen-ex/videos" element={<VideoCards />} />
             <Route path="/chat/:menteeName" element={<MenteeChat />} />
             <Route path="/learning" element={<LearningDashboard />} />
+            */}
+            <Route path="/career-paths" element={<CareerPaths />} />
+            <Route path="/learning" element={<Learning />} />
+            <Route path="/mentorship" element={<Mentorship />} />
+            <Route path="/chatbot" element={<Chatbot />} />
           </Routes>
         </Router>
       </div>

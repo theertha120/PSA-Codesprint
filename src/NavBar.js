@@ -24,17 +24,17 @@ const NavBar = () => {
 
                 {/* Spaced Links */}
                 <Flex alignItems="center" spacing={6}> {/* Ensuring all items are aligned */}
-                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/skill-dock')}>
-                        Skill Dock
-                    </Link>
-                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/career-voyage')}>
-                        Career Voyage
+                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/career-paths')}>
+                        Career Paths
                     </Link>
                     <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/learning')}>
-                        Development Dashboard
+                        Learning
                     </Link>
-                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/gen-ex')}>
-                        Mentorship Hub
+                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/menntorship')}>
+                        Mentorship
+                    </Link>
+                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/chatbot')}>
+                        Chatbot
                     </Link>
 
                     {/* Home Button with Icon */}

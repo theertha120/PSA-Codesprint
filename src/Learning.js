@@ -13,7 +13,7 @@ import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 import { FaPlayCircle, FaChalkboardTeacher, FaGamepad } from "react-icons/fa";
 import CourseDetails from "./CourseDetails"; // Import the new CourseDetails component
-import "./LearningDashboard.css"; // Import the CSS file
+import "./Learning.css"; // Import the CSS file
 import NavBar from "./NavBar";
 
 // Expanded AI-generated course data with various course types
@@ -72,7 +72,7 @@ const getMostPreferredCourseType = (courses) => {
     return mostPreferred;
 };
 
-const LearningDashboard = () => {
+const Learning = () => {
     const [showCourses, setShowCourses] = useState(false); // State to manage view
     const [recommendedCourses, setRecommendedCourses] = useState([]);
     const [mostPreferredCourseType, setMostPreferredCourseType] = useState("");
@@ -258,4 +258,4 @@ const LearningDashboard = () => {
     );
 };
 
-export default LearningDashboard;
+export default Learning;

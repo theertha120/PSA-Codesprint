@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Textarea, Button, VStack, Heading, Text } from '@chakra-ui/react';
 import NavBar from './NavBar';
 
-const MenteeChat = () => {
+const Mentorship = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
@@ -39,5 +39,5 @@ const MenteeChat = () => {
   );
 };
 
-export default MenteeChat;
+export default Mentorship;
 

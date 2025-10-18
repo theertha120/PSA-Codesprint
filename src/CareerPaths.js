@@ -1,4 +1,4 @@
-// CareerVoyage.js
+// CareerPaths.js
 import React from 'react';
 import { Box, Flex, Heading, Text, Button, VStack, HStack, useDisclosure } from '@chakra-ui/react';
 import { AiFillRocket } from 'react-icons/ai';
@@ -8,7 +8,7 @@ import StepByStepGuideModal from './Features/StepByStepGuideModal';
 import CareerSimulatorGuideModal from './Features/CareerSimulatorGuideModal'; // For Career Simulator Guide
 import NavBar from './NavBar';
 
-function CareerVoyage() {
+function CareerPaths() {
     const { isOpen, onOpen, onClose } = useDisclosure(); // Modal controls
     const { isOpen: isSimulatorOpen, onOpen: onSimulatorOpen, onClose: onSimulatorClose } = useDisclosure(); // Modal for Career Simulator Guide
     return (
@@ -63,5 +63,5 @@ function CareerVoyage() {
     );
 }
 
-export default CareerVoyage;
+export default CareerPaths;
 
