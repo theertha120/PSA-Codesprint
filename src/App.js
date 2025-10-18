@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import HomePage from "./HomePage.js";
 import Login from "./Login.js";
 import CareerPaths from "./CareerPaths.js";
-import Learning from "./Learning.js";
+import CourseLearning from "./CourseLearning.js";
 import Mentorship from "./Mentorship.js";
 import Chatbot from "./Chatbot.js";
 import UserProfile from "./UserProfile.js";
@@ -59,7 +59,7 @@ function App() {
             />
             <Route path="/home" element={<HomePage />} />
             <Route path="/career-paths" element={<CareerPaths />} />
-            <Route path="/learning" element={<Learning />} />
+            <Route path="/learning" element={<CourseLearning />} />
             <Route path="/mentorship" element={<Mentorship />} />
             <Route path="/chatbot" element={<Chatbot />} />
             <Route path="/profile" element={<UserProfile />} /> 

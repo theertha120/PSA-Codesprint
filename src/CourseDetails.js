@@ -1,84 +1,52 @@
 import React from "react";
-import { Grid, Box, Text, Button, Image } from "@chakra-ui/react";
+import { Box, Text, Grid, Button, Progress, VStack, HStack } from "@chakra-ui/react";
+import { FaPlayCircle, FaGamepad, FaChalkboardTeacher } from "react-icons/fa";
 
-// Update course data with your image paths
-const courses = [
-    {
-        title: "Course 1",
-        image: "Capture.JPEG", // Replace with your actual image path
-        completionTime: "2 weeks",
-        preparedBy: "Instructor A",
-        description: "This course covers the fundamentals of XYZ.",
-    },
-    {
-        title: "Course 2",
-        image: "Capture1.JPEG", // Replace with your actual image path
-        completionTime: "4 weeks",
-        preparedBy: "Instructor B",
-        description: "An in-depth look at ABC concepts.",
-    },
-    {
-        title: "Course 3",
-        image: "Capture3.JPEG", // Replace with your actual image path
-        completionTime: "3 weeks",
-        preparedBy: "Instructor C",
-        description: "Explore advanced topics in XYZ.",
-    },
-];
+const modeIcons = {
+  Video: <FaPlayCircle />,
+  Gamified: <FaGamepad />,
+  Lecture: <FaChalkboardTeacher />,
+};
 
-const CourseDetails = ({ onBack }) => {
-    return (
-        <Box
-            padding="20px"
-            backgroundColor="#f5f5f5"
-            minHeight="100vh"
-        >
-            <Text fontSize="2xl" textAlign="center" mb={6}>
-                Available Courses
-            </Text>
-            <Grid templateColumns="repeat(3, 1fr)" gap={6} justifyContent="center">
-                {courses.map((course, index) => (
-                    <Box
-                        key={index}
-                        borderWidth="1px"
-                        borderRadius="lg"
-                        overflow="hidden"
-                        padding="20px"
-                        textAlign="center"
-                        color="#2c0e60"
-                        height="350px" // Fixed height for uniformity
-                    >
-                        <Image
-                            src={course.image}
-                            alt={course.title}
-                            boxSize="150px"
-                            borderRadius="10px"
-                            marginBottom="10px"
-                            justifyContent={"center"}
-                            mx="auto"
-                        />
-                        <Text fontSize="lg" fontWeight="bold" mb={2}>
-                            {course.title}
-                        </Text>
-                        <Text>Completion Time: {course.completionTime}</Text>
-                        <Text>Prepared By: {course.preparedBy}</Text>
-                        <Text fontSize="sm" mb={4}>
-                            {course.description}
-                        </Text>
-                        <Button
-                            colorScheme="darkPurple"
-                            variant="solid"
-                        >
-                            Enroll Now
-                        </Button>
-                    </Box>
+const CourseDetails = ({ courses, onBack }) => {
+  return (
+    <Box p={6}>
+      <Text fontSize="2xl" textAlign="center" mb={6}>
+        Available Courses
+      </Text>
+      <Grid templateColumns={{ base: "repeat(1,1fr)", md: "repeat(3,1fr)" }} gap={6}>
+        {courses.map((course) => (
+          <Box
+            key={course.id}
+            borderWidth="1px"
+            borderRadius="lg"
+            p={4}
+            boxShadow="md"
+            textAlign="center"
+          >
+            <VStack spacing={2} align="stretch">
+              <Text fontWeight="bold" fontSize="lg">{course.title}</Text>
+              <Text fontSize="sm" color="gray.600">{course.specialisation}</Text>
+
+              <HStack spacing={3} justify="center" my={2}>
+                {course.modes.map((mode, i) => (
+                  <Box key={i} fontSize="25px" title={mode}>{modeIcons[mode]}</Box>
                 ))}
-            </Grid>
-            <Button onClick={onBack} marginTop="50px" colorScheme="darkPurple">
-                Back to Dashboard
-            </Button>
-        </Box>
-    );
+              </HStack>
+
+              <Progress value={course.progress} mt={2} colorScheme="pink" />
+              <Text>{course.progress}% Complete</Text>
+
+              <Button colorScheme="pink" width="full" mt={2}>
+                {course.progress > 0 ? "Resume" : "Start"}
+              </Button>
+            </VStack>
+          </Box>
+        ))}
+      </Grid>
+      <Button onClick={onBack} mt={6} colorScheme="pink">Back</Button>
+    </Box>
+  );
 };
 
 export default CourseDetails;
