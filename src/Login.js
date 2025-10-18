@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
-import { Box, Flex, Heading, Text, Button, HStack, Input, VStack, useToast, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure } from '@chakra-ui/react';
+import {
+    Box,
+    Flex,
+    Heading,
+    Text,
+    Button,
+    VStack,
+    Input,
+    useToast,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalCloseButton,
+    ModalBody,
+    ModalFooter,
+    useDisclosure,
+} from '@chakra-ui/react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const navigate = useNavigate();
-
-    const handleNavigation = (path) => {
-        navigate(path);
-    };
+    const toast = useToast();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const toast = useToast();
 
     const { isOpen: isSignUpOpen, onOpen: onSignUpOpen, onClose: onSignUpClose } = useDisclosure();
     const { isOpen: isSignInOpen, onOpen: onSignInOpen, onClose: onSignInClose } = useDisclosure();
@@ -22,7 +35,7 @@ const Login = () => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             toast({
-                title: "Account created.",
+                title: "Account created",
                 description: "You have successfully signed up!",
                 status: "success",
                 duration: 5000,
@@ -45,7 +58,7 @@ const Login = () => {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             toast({
-                title: "Signed In.",
+                title: "Signed In",
                 description: `Welcome back, ${userCredential.user.email}!`,
                 status: "success",
                 duration: 5000,
@@ -67,106 +80,87 @@ const Login = () => {
     return (
         <Box
             minH="100vh"
-            bgImage="url('bg.jpg')" // URL or path to your image
+            bgImage="url('/bg.jpg')" // Replace with your new background image
             bgSize="cover"
             bgPosition="center"
             bgRepeat="no-repeat"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
             p={6}
         >
-            <Flex
-                justify="center"
-                align="center"
-                minH="80vh" // Full viewport height
-                height={"20vh"}
-                marginRight={"20"}
-                marginLeft={"20"}
-                marginTop={10}
-                marginBottom={10}
+            
+            <Box
+                bg="rgba(255, 255, 255, 0.85)"
+                borderRadius="2xl"
+                boxShadow="2xl"
+                p={16}           // bigger padding inside
+                maxW="1200px"    // bigger width on desktop
+                minH="500px"     // make height bigger
+                width="100%"
+                display="flex"
+                flexDirection={{ base: 'column', md: 'row' }}
             >
-                <Box
-                    bg="rgba(255, 255, 255, 0.7)" // Transparent grey box
-                    width="100%" // Width covering 100% of the viewport
-                    height="100%" // Height covering 100% of the viewport
-                    borderRadius="200"
-                    boxShadow="2xl" // Drop shadow for the box
-                    display="flex"
-                    padding={20}
-                >
-                    {/* Left Half for Heading */}
-                    <Flex
-                        flex="1" // Take up half of the box
-                        justify="center"
-                        align="center"
-                        flexDirection="column"
+
+                {/* Left Section: Heading & Description */}
+                <Flex flex="1" justify="center" align="center" flexDirection="column" mb={{ base: 8, md: 0 }}>
+                    <Heading
+                        as="h1"
+                        size="3xl"
+                        color="darkPinkBlue.700"
+                        textAlign="center"
+                        mb={4}
+                        fontFamily="'Poppins', sans-serif"
+                        textShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
                     >
-                        <Heading
-                            as="h1"
-                            size="4xl"
-                            color="purple.900"
-                            fontFamily="'Poppins', sans-serif"
-                            textAlign="center"
-                            sx={{
-                                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)" // Apply text shadow
+                        Career Canvas
+                    </Heading>
+                    <Text
+                        fontSize="xl"
+                        color="darkPinkBlue.500"
+                        textAlign="center"
+                        textShadow="1px 1px 3px rgba(0,0,0,0.3)"
+                    >
+                        Every Talent, One Port: <br />
+                        where employees paint their own career journey
+                    </Text>
+                </Flex>
+
+                {/* Right Section: Buttons */}
+                <Flex flex="1" justify="center" align="center">
+                    <VStack spacing={6} w="full">
+                        <Button
+                            onClick={onSignInOpen}
+                            bgGradient="linear(to-r, darkPinkBlue.700, darkPinkBlue.400)"
+                            color="white"
+                            size="lg"
+                            w="100%"
+                            _hover={{
+                                bgGradient: "linear(to-r, darkPinkBlue.800, darkPinkBlue.500)",
+                                boxShadow: "lg",
                             }}
+                            borderRadius="3xl"
                         >
-                            PSA: Talent Harbour
-                        </Heading>
-                        <Text fontSize="xl" color="purple.600" textAlign="center" sx={{
-                            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)" // Apply text shadow
-                        }}>
-                            Every Talent, One Port:
-                            <br />Navigating Success Together
-                        </Text>
-                    </Flex>
+                            Log In
+                        </Button>
 
-                    {/* Right Half for Buttons */}
-                    <Flex
-                        flex="1" // Take up the other half of the box
-                        justify="center"
-                        align="center"
-                        flexDirection="column"
-                    >
-                        <VStack spacing={4}>
-                            <Button
-                                onClick={onSignInOpen}
-                                colorScheme="purple"
-                                bgGradient="linear(to-r, purple.600, purple.900)" // Dark purple gradient
-                                color="white"
-                                size="lg" // Make the button larger
-                                height="60px" // Adjust height
-                                width="400px" // Full width
-                                _hover={{
-                                    bgGradient: "linear(to-r, purple.700, purple.800)", // Darker gradient on hover
-                                    boxShadow: "lg", // Add a shadow effect on hover
-                                }}
-                                borderRadius="80px" // Rounded corners
-                                boxShadow="md" // Base shadow for the button
-                            >
-                                Log In
-                            </Button> {/* Open Sign In Modal */}
-
-                            <Button
-                                onClick={onSignUpOpen}
-                                colorScheme="purple"
-                                bgGradient="linear(to-r, purple.600, purple.900)" // Dark purple gradient
-                                color="white"
-                                size="lg" // Make the button larger
-                                height="60px" // Adjust height
-                                width="100%" // Full width
-                                _hover={{
-                                    bgGradient: "linear(to-r, purple.700, purple.800)", // Darker gradient on hover
-                                    boxShadow: "lg", // Add a shadow effect on hover
-                                }}
-                                borderRadius="80px" // Rounded corners
-                                boxShadow="md" // Base shadow for the button
-                            >
-                                Sign Up
-                            </Button> {/* Open Sign Up Modal */}
-                        </VStack>
-                    </Flex>
-
-                </Box>
-            </Flex>
+                        <Button
+                            onClick={onSignUpOpen}
+                            bgGradient="linear(to-r, darkPinkBlue.500, darkPinkBlue.300)"
+                            color="white"
+                            size="lg"
+                            w="100%"
+                            _hover={{
+                                bgGradient: "linear(to-r, darkPinkBlue.600, darkPinkBlue.400)",
+                                boxShadow: "lg",
+                            }}
+                            borderRadius="3xl"
+                        >
+                            Sign Up
+                        </Button>
+                    </VStack>
+                </Flex>
+            </Box>
 
             {/* Sign In Modal */}
             <Modal isOpen={isSignInOpen} onClose={onSignInClose}>
@@ -181,20 +175,22 @@ const Login = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 type="email"
-                                required
                             />
                             <Input
                                 placeholder="Password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 type="password"
-                                required
                             />
                         </VStack>
                     </ModalBody>
-
                     <ModalFooter>
-                        <Button color="darkPurple.700" onClick={handleSignIn} width="full">
+                        <Button
+                            bgGradient="linear(to-r, darkPinkBlue.700, darkPinkBlue.400)"
+                            color="white"
+                            w="full"
+                            onClick={handleSignIn}
+                        >
                             Sign In
                         </Button>
                     </ModalFooter>
@@ -214,20 +210,22 @@ const Login = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 type="email"
-                                required
                             />
                             <Input
                                 placeholder="Password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 type="password"
-                                required
                             />
                         </VStack>
                     </ModalBody>
-
                     <ModalFooter>
-                        <Button color="darkPurple.700" onClick={handleSignUp} width="full">
+                        <Button
+                            bgGradient="linear(to-r, darkPinkBlue.700, darkPinkBlue.400)"
+                            color="white"
+                            w="full"
+                            onClick={handleSignUp}
+                        >
                             Sign Up
                         </Button>
                     </ModalFooter>
@@ -235,7 +233,6 @@ const Login = () => {
             </Modal>
         </Box>
     );
-
 };
 
 export default Login;
