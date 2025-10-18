@@ -80,7 +80,7 @@ const Login = () => {
     return (
         <Box
             minH="100vh"
-            bgImage="url('/bg.jpg')" // Replace with your new background image
+            bgImage="url('/bg.jpg')" 
             bgSize="cover"
             bgPosition="center"
             bgRepeat="no-repeat"
@@ -94,9 +94,9 @@ const Login = () => {
                 bg="rgba(255, 255, 255, 0.85)"
                 borderRadius="2xl"
                 boxShadow="2xl"
-                p={16}           // bigger padding inside
-                maxW="1200px"    // bigger width on desktop
-                minH="500px"     // make height bigger
+                p={16}           
+                maxW="1200px"    
+                minH="500px"    
                 width="100%"
                 display="flex"
                 flexDirection={{ base: 'column', md: 'row' }}
