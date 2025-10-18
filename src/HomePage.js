@@ -90,7 +90,7 @@ const HomePage = () => {
           color="blue.700"
           fontWeight="bold"
         >
-          Welcome, Nancy Drew!
+          Welcome, Samantha Lee!
         </Heading>
 
         {/* Top Row: 2 Cards Side by Side */}

@@ -10,6 +10,7 @@ import CareerPaths from "./CareerPaths.js";
 import Learning from "./Learning.js";
 import Mentorship from "./Mentorship.js";
 import Chatbot from "./Chatbot.js";
+import UserProfile from "./UserProfile.js";
 
 const theme = extendTheme({
   fonts: {
@@ -61,6 +62,7 @@ function App() {
             <Route path="/learning" element={<Learning />} />
             <Route path="/mentorship" element={<Mentorship />} />
             <Route path="/chatbot" element={<Chatbot />} />
+            <Route path="/profile" element={<UserProfile />} /> 
           </Routes>
         </Router>
       </div>
