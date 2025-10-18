@@ -1,149 +1,187 @@
 import React from "react";
 import {
-    Button,
-    Container,
-    Grid,
-    Box,
-    Avatar,
-    Heading,
-    Text,
-    SimpleGrid,
-    Image, // Import the Image component
+  Button,
+  Container,
+  Box,
+  Heading,
+  Text,
+  Flex,
+  Image,
 } from "@chakra-ui/react";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
-import { FiLogOut, FiAward, FiTrendingUp, FiBookOpen, FiUsers } from "react-icons/fi"; // Import icons
+import { FiLogOut, FiMap, FiBookOpen, FiMessageCircle, FiUsers } from "react-icons/fi";
 
-
-// Define the main features with corresponding images from the public folder
 const features = [
-    {
-        title: "Skill Dock",
-        description:
-            "Employees earn verified badges for new skills. Skill Wallet using blockchain for transparency.",
-        image: "skills.png", // Image path in the public folder
-        buttonLabel: "Access Skills",
-        buttonRoute: "/skill-dock",
-        icon: <FiAward size={40} />,
-    },
-    {
-        title: "Career Voyage",
-        description:
-            "Simulate various career paths and visualize potential career outcomes based on skills.",
-        image: "career.webp", // Image path in the public folder
-        buttonLabel: "View Career Paths",
-        buttonRoute: "/career-voyage",
-        icon: <FiTrendingUp size={40} />,
-    },
-    {
-        title: "Development Dashboard",
-        description:
-            "Managers track engagement across generations and skill levels. AI recommends formats based on preferences.",
-        image: "development.png", // Image path in the public folder
-        buttonLabel: "Explore Courses",
-        buttonRoute: "/learning",
-        icon: <FiBookOpen size={40} />,
-    },
-    {
-        title: "Mentorship Hub",
-        description:
-            "Resources for younger interns and feedback tools for managers, fostering skill-sharing across generations.",
-        image: "mentor.jpg", // Image path in the public folder
-        buttonLabel: "Engage Now",
-        buttonRoute: "/gen-ex",
-        icon: <FiUsers size={40} />,
-    },
+  {
+    title: "Personalized Career Pathways",
+    description:
+      "View your current skills, discover suggested target roles, analyze skill gaps, and visualize your career journey to leadership roles.",
+    image: "career_path.png",
+    buttonLabel: "View Pathways",
+    buttonRoute: "/career-paths",
+    icon: <FiMap size={40} />,
+  },
+  {
+    title: "Development Dashboard",
+    description:
+      "Explore video, gamified, and lecture-style courses to bridge your skill gaps and achieve your career goals faster.",
+    image: "courses.png",
+    buttonLabel: "Explore Courses",
+    buttonRoute: "/learning",
+    icon: <FiBookOpen size={40} />,
+  },
+  {
+    title: "AI Chatbot",
+    description:
+      "Your assistant for career, learning, and well-being. Try commands like ‘Show my skill gaps’ or ‘I feel stressed’.",
+    image: "chatbot.png",
+    buttonLabel: "Chat Now",
+    buttonRoute: "/chatbot",
+    icon: <FiMessageCircle size={40} />,
+  },
+  {
+    title: "Mentorship Hub",
+    description:
+      "Get matched with mentors specialized in your skill gaps. Schedule sessions and let our AI note taker record key points.",
+    image: "mentorship.png",
+    buttonLabel: "Find Mentors",
+    buttonRoute: "/mentorship",
+    icon: <FiUsers size={40} />,
+  },
 ];
 
 const HomePage = () => {
-    const navigate = useNavigate(); // Get the navigate function
+  const navigate = useNavigate();
+  const handleNavigation = (path) => navigate(path);
+  const handleLogout = () => navigate("/");
 
-    const handleNavigation = (path) => {
-        navigate(path); // Use navigate to change routes
-    };
+  return (
+    <>
+      <NavBar />
+      <Container maxW="container.xl" mt={1} position="relative">
+        {/* Log Out Button */}
+        <Button
+          bg="pink.500"
+          color="white"
+          position="absolute"
+          top={2}
+          right={5}
+          variant="solid"
+          borderRadius="md"
+          boxShadow="md"
+          _hover={{
+            bg: "pink.600",
+            transform: "scale(1.05)",
+            transition: "all 0.2s ease-in-out",
+          }}
+          leftIcon={<FiLogOut />}
+          onClick={handleLogout}
+        >
+          Log Out
+        </Button>
 
-    const handleLogout = () => {
-        // Add any logout logic here (e.g., clearing user session)
-        // Then navigate to the login page or another route
-        navigate('/'); // Navigate to the login page
-    };
+        {/* Welcome message */}
+        <Heading
+          as="h4"
+          textAlign="center"
+          mt={14}
+          mb={8}
+          color="blue.700"
+          fontWeight="bold"
+        >
+          Welcome, Nancy Drew!
+        </Heading>
 
-    return (
-        <>
-            <NavBar />
-            <Container maxW="container.xl" mt={1} position="relative">
+        {/* Top Row: 2 Cards Side by Side */}
+        <Flex direction={{ base: "column", md: "row" }} gap={6} mb={6}>
+          {features.slice(0, 2).map((feature, index) => (
+            <Box
+              key={index}
+              flex={1}
+              p={6}
+              textAlign="center"
+              borderRadius="xl"
+              bgGradient="linear(to-b, blue.900, pink.600)"
+              color="white"
+              boxShadow="2xl"
+              _hover={{ transform: "scale(1.03)", transition: "all 0.3s ease" }}
+            >
+              <Box mb={4}>{feature.icon}</Box>
+              <Image
+                src={feature.image}
+                alt={feature.title}
+                height="180px"
+                mx="auto"
+                mb={4}
+                borderRadius="lg"
+                objectFit="cover"
+              />
+              <Text fontSize="2xl" fontWeight="bold" mb={2}>
+                {feature.title}
+              </Text>
+              <Text fontSize="md" mb={4}>
+                {feature.description}
+              </Text>
+              <Button
+                bg="pink.400"
+                color="white"
+                _hover={{ bg: "pink.500" }}
+                width="100%"
+                onClick={() => handleNavigation(feature.buttonRoute)}
+              >
+                {feature.buttonLabel}
+              </Button>
+            </Box>
+          ))}
+        </Flex>
 
-                {/* Log Out Button Positioned Higher */}
-                <Button
-                    colorScheme="darkPurple"
-                    position="absolute"
-                    top={1}
-                    right={5}
-                    variant="solid"
-                    borderRadius="md"
-                    boxShadow="md"
-                    _hover={{
-                        bg: "purple.800",
-                        transform: "scale(1.05)",
-                        transition: "all 0.2s ease-in-out",
-                    }}
-                    leftIcon={<FiLogOut />}
-                    onClick={handleLogout}
-                >
-                    Log Out
-                </Button>
-
-                {/* Welcome message positioned lower */}
-                <Heading as="h4" textAlign="center" mt={12} mb={4}>
-                    Welcome, Nancy Drew!
-                </Heading>
-
-                <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={6} mt={8}>
-                    {features.map((feature, index) => (
-                        <Box
-                            key={index}
-                            p={4}
-                            textAlign="center"
-                            borderWidth="1px"
-                            borderRadius="lg"
-                            height="450px"
-                            display="flex"
-                            flexDirection="column"
-                            justifyContent="space-between"
-                            bg="#f5f5f5"
-                            boxShadow="md"
-
-                        >
-                            {/* Add Image for each feature */}
-                            <Image
-                                src={feature.image} // Source from feature object
-                                alt={feature.title} // Alt text for accessibility
-                                height={"200px"}
-                                mx="auto" // Center the image
-                                mb={2} // Margin below the image
-                            />
-                            <Text fontSize="xl" fontWeight="bold" mb={1}>
-                                {feature.title}
-                            </Text>
-                            <Text fontSize="md" mb={2}>
-                                {feature.description}
-                            </Text>
-
-                            {/* Button inside the feature box */}
-                            <Button
-                                colorScheme="darkPurple"
-                                variant="outline"
-                                width="100%"
-                                onClick={() => handleNavigation(feature.buttonRoute)}
-                            >
-                                {feature.buttonLabel}
-                            </Button>
-                        </Box>
-                    ))}
-                </SimpleGrid>
-            </Container>
-        </>
-    );
+        {/* Bottom Row: 2 Cards Stacked */}
+        <Flex direction={{ base: "column", md: "row" }} gap={6}>
+          {features.slice(2, 4).map((feature, index) => (
+            <Box
+              key={index}
+              flex={1}
+              p={5}
+              textAlign="center"
+              borderRadius="xl"
+              bgGradient="linear(to-b, pink.600, blue.900)"
+              color="white"
+              boxShadow="xl"
+              mb={{ base: 6, md: 0 }}
+              _hover={{ transform: "scale(1.03)", transition: "all 0.3s ease" }}
+            >
+              <Box mb={4}>{feature.icon}</Box>
+              <Image
+                src={feature.image}
+                alt={feature.title}
+                height="140px"
+                mx="auto"
+                mb={4}
+                borderRadius="lg"
+                objectFit="cover"
+              />
+              <Text fontSize="xl" fontWeight="bold" mb={2}>
+                {feature.title}
+              </Text>
+              <Text fontSize="sm" mb={4}>
+                {feature.description}
+              </Text>
+              <Button
+                bg="pink.400"
+                color="white"
+                _hover={{ bg: "pink.500" }}
+                width="100%"
+                onClick={() => handleNavigation(feature.buttonRoute)}
+              >
+                {feature.buttonLabel}
+              </Button>
+            </Box>
+          ))}
+        </Flex>
+      </Container>
+    </>
+  );
 };
 
 export default HomePage;

@@ -1,57 +1,80 @@
-import { Box, Flex, Text, Link, Button } from '@chakra-ui/react';
-import { FaHome } from 'react-icons/fa';  // Import the Home icon from react-icons
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Box, Flex, Text, Link, Button, HStack } from "@chakra-ui/react";
+import { FaHome, FaUserCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
-    const navigate = useNavigate(); // Get the navigate function
+  const navigate = useNavigate();
 
-    const handleNavigation = (path) => {
-        navigate(path); // Use navigate to change routes
-    };
+  const handleNavigation = (path) => navigate(path);
 
-    return (
-        <Box
-            backgroundImage="linear-gradient(90deg, #3f2182 0%, #4B0082 100%)" // Gradient background
-            px={8}
-            py={4}
-            color="white"
-        >
-            <Flex justifyContent="space-between" alignItems="center">
-                {/* Main Title */}
-                <Text fontSize="lg" fontWeight="bold" fontFamily="Poppins">
-                    PSA TalentHarbour
-                </Text>
+  return (
+    <Box
+      bgGradient="linear(to-r, pink.500, blue.800)" 
+      px={8}
+      py={4}
+      color="white"
+      boxShadow="lg"
+    >
+      <Flex justifyContent="space-between" alignItems="center">
+        {/* Left Title */}
+        <Text fontSize="lg" fontWeight="bold" fontFamily="Poppins">
+          PSA Career Canvas: where employees <em>paint</em> their own career journey!
+        </Text>
 
-                {/* Spaced Links */}
-                <Flex alignItems="center" spacing={6}> {/* Ensuring all items are aligned */}
-                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/career-paths')}>
-                        Career Paths
-                    </Link>
-                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/learning')}>
-                        Learning
-                    </Link>
-                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/menntorship')}>
-                        Mentorship
-                    </Link>
-                    <Link mx={6} href="#" _hover={{ textDecoration: 'underline' }} fontFamily="Poppins" onClick={() => handleNavigation('/chatbot')}>
-                        Chatbot
-                    </Link>
+        {/* Navigation Links */}
+        <HStack spacing={6} alignItems="center">
+          <Button
+            leftIcon={<FaHome />}
+            bg="white"
+            color="blue.800"
+            _hover={{ bg: "pink.400", color: "white" }}
+            onClick={() => handleNavigation("/home")}
+          >
+            Home
+          </Button>
 
-                    {/* Home Button with Icon */}
-                    <Button
-                        mx={6}
-                        leftIcon={<FaHome />} // Add Home icon
-                        backgroundColor="white" // Optional: to match the theme
-                        variant="solid"
-                        opacity={.8}
-                        onClick={() => handleNavigation('/home')}
-                    >
-                        Home
-                    </Button>
-                </Flex>
-            </Flex>
-        </Box>
-    );
+          <Button
+            leftIcon={<FaUserCircle />}
+            bg="white"
+            color="blue.800"
+            _hover={{ bg: "pink.400", color: "white" }}
+            onClick={() => handleNavigation("/profile")}
+          >
+            My Profile
+          </Button>
+
+          <Link
+            _hover={{ textDecoration: "underline", color: "pink.200" }}
+            fontFamily="Poppins"
+            onClick={() => handleNavigation("/career-paths")}
+          >
+            Career Paths
+          </Link>
+          <Link
+            _hover={{ textDecoration: "underline", color: "pink.200" }}
+            fontFamily="Poppins"
+            onClick={() => handleNavigation("/learning")}
+          >
+            Learning
+          </Link>
+          <Link
+            _hover={{ textDecoration: "underline", color: "pink.200" }}
+            fontFamily="Poppins"
+            onClick={() => handleNavigation("/chatbot")}
+          >
+            Chatbot
+          </Link>
+          <Link
+            _hover={{ textDecoration: "underline", color: "pink.200" }}
+            fontFamily="Poppins"
+            onClick={() => handleNavigation("/mentorship")}
+          >
+            Mentorship
+          </Link>
+        </HStack>
+      </Flex>
+    </Box>
+  );
 };
 
 export default NavBar;
