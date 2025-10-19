@@ -111,7 +111,7 @@ const HomePage = () => {
               <Image
                 src={feature.image}
                 alt={feature.title}
-                height="180px"
+                height="200px"
                 mx="auto"
                 mb={4}
                 borderRadius="lg"
@@ -155,7 +155,7 @@ const HomePage = () => {
               <Image
                 src={feature.image}
                 alt={feature.title}
-                height="140px"
+                height="200px"
                 mx="auto"
                 mb={4}
                 borderRadius="lg"
