@@ -2,6 +2,7 @@
 import React from 'react';
 import { Box, Flex, Heading, Text, Button, VStack, HStack, useDisclosure } from '@chakra-ui/react';
 import { AiFillRocket } from 'react-icons/ai';
+import { TargetCard } from './Features/TargetCard';
 import { CareerSimulator } from './Features/CareerSimulator';
 import { EmergingSkillsForecast } from './Features/EmergingSkillsForecast';
 import StepByStepGuideModal from './Features/StepByStepGuideModal';
@@ -44,6 +45,11 @@ function CareerPaths() {
                     {/* Two-Column Layout for Career Simulator and Skills Forecast */}
                     <Flex justify="space-between" direction={{ base: 'column', md: 'row' }} alignItems="flex-start">
                         {/* Left Column - Career Simulator */}
+                        <Box flex="1" bg="white" boxShadow="lg" borderRadius="md" p={6} mr={{ md: 4 }} mb={{ base: 6, md: 0 }}>
+                            <TargetCard />
+                        </Box>
+                        
+                        {/* Centre Column - Career Simulator */}
                         <Box flex="1" bg="white" boxShadow="lg" borderRadius="md" p={6} mr={{ md: 4 }} mb={{ base: 6, md: 0 }}>
                             <CareerSimulator />
                         </Box>
