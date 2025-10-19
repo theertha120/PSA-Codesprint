@@ -17,7 +17,7 @@ const features = [
     title: "Personalized Career Pathways",
     description:
       "View your current skills, discover suggested target roles, analyze skill gaps, and visualize your career journey to leadership roles.",
-    image: "career_path.png",
+    image: "first one.png",
     buttonLabel: "View Pathways",
     buttonRoute: "/career-paths",
     icon: <FiMap size={40} />,
@@ -26,7 +26,7 @@ const features = [
     title: "Development Dashboard",
     description:
       "Explore video, gamified, and lecture-style courses to bridge your skill gaps and achieve your career goals faster.",
-    image: "courses.png",
+    image: "second one .png",
     buttonLabel: "Explore Courses",
     buttonRoute: "/learning",
     icon: <FiBookOpen size={40} />,
@@ -35,7 +35,7 @@ const features = [
     title: "AI Chatbot",
     description:
       "Your assistant for career, learning, and well-being. Try commands like ‘Show my skill gaps’ or ‘I feel stressed’.",
-    image: "chatbot.png",
+    image: "third one AI.png",
     buttonLabel: "Chat Now",
     buttonRoute: "/chatbot",
     icon: <FiMessageCircle size={40} />,
@@ -44,7 +44,7 @@ const features = [
     title: "Mentorship Hub",
     description:
       "Get matched with mentors specialized in your skill gaps. Schedule sessions and let our AI note taker record key points.",
-    image: "mentorship.png",
+    image: "fourth one tutor.png",
     buttonLabel: "Find Mentors",
     buttonRoute: "/mentorship",
     icon: <FiUsers size={40} />,
