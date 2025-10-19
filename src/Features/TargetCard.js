@@ -95,17 +95,17 @@ export const TargetCard = () => {
                     <ModalBody>
                         <Tabs isFitted variant="enclosed" size="md">
                             <TabList mb="1em">
-                                <Tab>Target Forecast</Tab>
                                 <Tab>Potential Targets</Tab>
+                                <Tab>Target Forecast</Tab>
                             </TabList>
 
                             <TabPanels>
                                 <TabPanel>
-                                    <TargetForecast />
+                                    <PotentialTargets />
                                 </TabPanel>
 
                                 <TabPanel>
-                                    <PotentialTargets />
+                                    <TargetForecast />
                                 </TabPanel>
                             </TabPanels>
                         </Tabs>
