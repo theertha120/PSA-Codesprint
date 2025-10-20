@@ -1,0 +1,118 @@
+Function / Unit / Skill,Specialisation / Unit,Technical / Soft Skills,Mode of Courses Available
+Automation and Robotics,Engineering Systems,Technical   ,"Gamified, Video"
+Automation and Robotics,Robotic Process Automation,Technical   ,"Gamified, Lecture"
+Business Development,Business Analysis,Technical   ,"Lecture, Video, Gamified"
+Business Development,Transactional,Technical   ,Video
+Commercial,Account Management,Technical   ,Gamified
+Corporate Affairs,Public Relations Management,Technical   ,"Lecture, Gamified"
+Data & AI: Data Engineering,Data Model Architecture,Technical   ,Video
+Data & AI: Data Engineering,Data Model Design,Technical   ,"Gamified, Video, Lecture"
+Data & AI: Data Science,Data Understanding & Preparation,Technical   ,"Video, Lecture"
+Data & AI: Data Science,Data Visualisation,Technical   ,"Gamified, Video"
+Data & AI: Data Science,Descriptive / Diagnostics Analytics,Technical   ,"Gamified, Lecture"
+Data & AI: Data Science,Machine Learning & AI,Technical   ,"Lecture, Video, Gamified"
+Data & AI: Data Science,Predictive / Prescriptive Analytics,Technical   ,Video
+Data & AI: Data Strategy & Management,Data Strategy & Management: Data Governance,Technical   ,Gamified
+Data & AI: Optimization,Relational database/datagrid design and management,Technical   ,"Lecture, Gamified"
+Data & AI: Optimization,System architecture design and understanding of PaaS and SaaS,Technical   ,Video
+Data & AI: RPA,RPA Goverance & Process Design,Technical   ,"Gamified, Video, Lecture"
+Data & AI: RPA,RPA Software Development,Technical   ,"Video, Lecture"
+Data & AI: Simulation,3D Model Visualization,Technical   ,"Gamified, Video"
+Data & AI: Simulation,Descriptive/diagnostics data analytics,Technical   ,"Gamified, Lecture"
+Data & AI: Simulation,Simulation model design & development,Technical   ,"Lecture, Video, Gamified"
+Engineering: Civil Engineering,Building Maintenance and Facilities Management,Technical   ,Video
+Engineering: Civil Engineering,Green Building Technologies and Management,Technical   ,Gamified
+Engineering: Civil Engineering,Planning and Development,Technical   ,"Lecture, Gamified"
+Engineering: Electrical and Electronics Engineering,Battery Chemistry and Management,Technical   ,Video
+Engineering: Electrical and Electronics Engineering,Battery Energy Storage and Charging System,Technical   ,"Gamified, Video, Lecture"
+Engineering: Electrical and Electronics Engineering,Electrical Infrastructure,Technical   ,"Video, Lecture"
+Engineering: Equipment Engineering,Automation Systems,Technical   ,"Gamified, Video"
+Engineering: Equipment Engineering,Autonomous Systems,Technical   ,"Gamified, Lecture"
+Engineering: Equipment Engineering,Horizontal Transport Development,Technical   ,"Lecture, Video, Gamified"
+Engineering: Equipment Engineering,Smart Grid,Technical   ,Video
+Finance,Accounting and Consolidation,Technical   ,Gamified
+Finance,Audit,Technical   ,"Lecture, Gamified"
+Finance,Claims and Insurance,Technical   ,Video
+Finance,Financial Modeling,Technical   ,"Gamified, Video, Lecture"
+Finance,Green Finance: Carbon Accounting and Management,Technical   ,"Video, Lecture"
+Finance,Risk Management,Technical   ,"Gamified, Video"
+Finance,Tax,Technical   ,"Gamified, Lecture"
+General Management,Business Unit Management,Technical   ,"Lecture, Video, Gamified"
+HSS,GHSSS Policy and Planning,Technical   ,Video
+Human Resource,Benefits,Technical   ,Gamified
+Human Resource,Compensation,Technical   ,"Lecture, Gamified"
+Human Resource,Generalist / Business Partner,Technical   ,Video
+Human Resource,HR Information Systems / Technology,Technical   ,"Gamified, Video, Lecture"
+Human Resource,Industrial Relations,Technical   ,"Video, Lecture"
+Human Resource,Organisation Development,Technical   ,"Gamified, Video"
+Human Resource,Talent Acquisition / Recruitment,Technical   ,"Gamified, Lecture"
+Human Resource,Talent Management,Technical   ,"Lecture, Video, Gamified"
+Human Resource,Training / Learning and Development,Technical   ,Video
+Info Tech: Application Development,Software Architecture: Software Analysis & Design,Technical   ,Gamified
+Info Tech: Application Development,Software Architecture: Software Architecture,Technical   ,"Lecture, Gamified"
+Info Tech: Application Development,Software Engineering: Agile Methodology,Technical   ,Video
+Info Tech: Application Development,Software Engineering: Automated Test Development and Testing,Technical   ,"Gamified, Video, Lecture"
+Info Tech: Application Development,Software Engineering: DevOps / DevSecOps,Technical   ,"Video, Lecture"
+Info Tech: Application Development,Software Engineering: Software Integration,Technical   ,"Gamified, Video"
+Info Tech: Application Development,UI/UX Design & Development: Customer Experience Management,Technical   ,"Gamified, Lecture"
+Info Tech: Application Development,UI/UX Design & Development: User Interface Design,Technical   ,"Lecture, Video, Gamified"
+Info Tech: Business Domain Expertise,Business Domain & Needs Analysis,Technical   ,Video
+Info Tech: Cybersecurity,Cybersecurity Governance : Cybersecurity Architecture,Technical   ,Gamified
+Info Tech: Cybersecurity,Cybersecurity Governance : Cybersecurity Governance,Technical   ,"Lecture, Gamified"
+Info Tech: Cybersecurity,Cybersecurity Incident Handling: Cybersecurity Threat Analysis and Defence,Technical   ,Video
+Info Tech: Cybersecurity,Cybersecurity Operation: Network Security Management,Technical   ,"Gamified, Video, Lecture"
+Info Tech: Infrastructure,Cloud Computing: Cloud Administration & Management,Technical   ,"Video, Lecture"
+Info Tech: Infrastructure,Cloud Computing: Cloud Architecture,Technical   ,"Gamified, Video"
+Info Tech: Infrastructure,Infrastructure Architecture: Network Architecture,Technical   ,"Gamified, Lecture"
+Info Tech: Infrastructure,Network Management: SDN and Network Automation,Technical   ,"Lecture, Video, Gamified"
+Info Tech: Infrastructure,Operations and Management: IT Service Management,Technical   ,Video
+Info Tech: Infrastructure,Systems & Middleware Management: Backup/ Storage / Virtualisation Management,Technical   ,Gamified
+Info Tech: Infrastructure,Systems & Middleware Management: Desktops / Servers Management,Technical   ,"Lecture, Gamified"
+Info Tech: IT Governance & Strategy,Business Unit IT Management,Technical   ,Video
+Info Tech: IT Governance & Strategy,Change & Transformation Management,Technical   ,"Gamified, Video, Lecture"
+Info Tech: IT Governance & Strategy,Enterprise Architecture,Technical   ,"Video, Lecture"
+Info Tech: IT Governance & Strategy,Process Improvement & Optimisation and Problem Management,Technical   ,"Gamified, Video"
+Info Tech: IT Governance & Strategy,Technology Management & Innovation,Technical   ,"Gamified, Lecture"
+Info Tech: IT Governance & Strategy,Vendor and Contract Management,Technical   ,"Lecture, Video, Gamified"
+Info Tech: Product Management,Enterprise Architecture: Business Architecture,Technical   ,Video
+Info Tech: Product Management,IP Management: Product Intellectual Property Management,Technical   ,Gamified
+Info Tech: Product Management,Product Life Cycle Management: Customer Experience Management - CX,Technical   ,"Lecture, Gamified"
+Info Tech: Product Management,Product Life Cycle Management: Product Configuration Management,Technical   ,Video
+Info Tech: Product Management,Product Life Cycle Management: Product Development Lifecycle Management,Technical   ,"Gamified, Video, Lecture"
+Info Tech: Product Management,Product Life Cycle Management: Vendor Management,Technical   ,"Video, Lecture"
+Legal and Corporate Secretariat,Legal - Merger and Acquisition,Technical   ,"Gamified, Video"
+Legal and Corporate Secretariat,Legal - Personal Data Protection - PDPA,Technical   ,"Gamified, Lecture"
+Operations,"Auxiliary, Governmental and Customs Management",Technical   ,"Lecture, Video, Gamified"
+Operations,Container Planning Management,Technical   ,Video
+Operations,Container Terminal Management,Technical   ,Gamified
+Operations,Multi-purpose Terminals,Technical   ,"Lecture, Gamified"
+Operations,"Resource Planning, Deployment and Support",Technical   ,Video
+Operations,Stowage Planning,Technical   ,"Gamified, Video, Lecture"
+Operations,Transhipment,Technical   ,"Video, Lecture"
+Operations,Yard Operations and Planning,Technical   ,"Gamified, Video"
+Others,Change Management and Transformation,Technical   ,"Gamified, Lecture"
+Procurement,Category Management,Technical   ,"Lecture, Video, Gamified"
+Procurement,Global Framework Agreement development,Technical   ,Video
+Procurement,Supplier Management,Technical   ,Gamified
+Procurement,Sustainable Procurement,Technical   ,"Lecture, Gamified"
+Supply Chain and Logistics,4PL,Technical   ,Video
+Supply Chain and Logistics,CFS,Technical   ,"Gamified, Video, Lecture"
+Supply Chain and Logistics,Contract Logistics,Technical   ,"Video, Lecture"
+Supply Chain and Logistics,Port Ecosystem,Technical   ,"Gamified, Video"
+Sustainability,Energy Generalist,Technical   ,"Gamified, Lecture"
+Sustainability,Energy Policy and Regulations,Technical   ,"Lecture, Video, Gamified"
+Sustainability,ESG policies and strategies,Technical   ,Video
+Sustainability,International Forum Green Advocacy,Technical   ,Gamified
+Sustainability,Maritime and Shipping Decarbonisation,Technical   ,"Lecture, Gamified"
+Sustainability,Sustainable Supply Chain Management: Green Logistics,Technical   ,Video
+Sustainability,Waste Management,Technical   ,"Gamified, Video, Lecture"
+Leadership Development,Team Management,Soft Skills,"Lecture, Gamified"
+Emotional Intelligence,Workplace Awareness,Soft Skills,"Lecture, Video"
+Communication Skills,Business Writing,Soft Skills,"Video, Lecture"
+Negotiation & Persuasion,Business Negotiation,Soft Skills,"Gamified, Video"
+Conflict Resolution,Workplace Mediation,Soft Skills,"Lecture, Gamified"
+Time Management,Productivity Techniques,Soft Skills,Video
+Creative Thinking,Innovation Techniques,Soft Skills,Lecture
+Presentation Skills,Storytelling & Delivery,Soft Skills,Video
+Adaptability & Resilience,Workplace Challenges,Soft Skills,Gamified
+Team Collaboration,Cross-Functional Work,Soft Skills,"Gamified, Video"
