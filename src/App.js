@@ -6,7 +6,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import HomePage from "./HomePage.js";
 import Login from "./Login.js";
-import CareerPaths from "./CareerPaths.js";
+import CareerPathway from "./CareerPathway.js";
 import CourseLearning from "./CourseLearning.js";
 import Mentorship from "./Mentorship.js";
 import Chatbot from "./Chatbot.js";
@@ -58,7 +58,7 @@ function App() {
               }
             />
             <Route path="/home" element={<HomePage />} />
-            <Route path="/career-paths" element={<CareerPaths />} />
+            <Route path="/career-paths" element={<CareerPathway />} />
             <Route path="/learning" element={<CourseLearning />} />
             <Route path="/mentorship" element={<Mentorship />} />
             <Route path="/chatbot" element={<Chatbot />} />
