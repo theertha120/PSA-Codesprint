@@ -305,27 +305,6 @@ export const PotentialTargets = () => {
         };
     }, [selectedProfile, toast]);
 
-    // scroll/timeline syncing
-    useEffect(() => {
-        const onScroll = () => {
-            if (!cardRefs.current || !timelineRef.current) return;
-            const cards = cardRefs.current;
-            const topMost = cards
-                .map((el, idx) => ({ idx, rect: el?.getBoundingClientRect()?.top ?? Infinity }))
-                .sort((a, b) => Math.abs(a.rect) - Math.abs(b.rect))[0];
-            if (!topMost) return;
-            const activeIdx = topMost.idx;
-            const dots = timelineRef.current.querySelectorAll('.tf-dot');
-            dots.forEach((d, i) => {
-                d.classList.toggle('active', i === activeIdx);
-            });
-        };
-
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-        return () => window.removeEventListener('scroll', onScroll);
-    }, [forecast]);
-
     const handleProfileChange = (e) => {
         const id = e.target.value;
         const p = profiles.find((x) => x.employee_id === id);
@@ -353,10 +332,11 @@ export const PotentialTargets = () => {
 
         <Box display={{ md: 'flex' }} gap={6}>
             <Box className="page-container" p={5} marginRight={10} marginLeft={10} align="center" alignItems="center" justifyContent="center">
-            <Grid templateColumns="repeat(3, 1fr)" gap={4}>
+            <Grid templateColumns="auto auto 1fr" gap={4} width="100%">
                     {targetData.map((course, index) => (
                         <Box
                             key={index}
+                            className='pt-card'
                             borderWidth="1px"
                             borderRadius="lg"
                             p={4}
@@ -388,14 +368,8 @@ export const PotentialTargets = () => {
 
             {/* Inline styles for animation */}
             <style>{`
-                .tf-card { padding: 12px; transition: transform 0.45s ease, box-shadow 0.3s ease; }
-                .tf-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
-                .tf-timeline { border-left: 2px solid rgba(63,33,130,0.08); }
-                .tf-dot { width: 18px; height: 18px; border-radius: 50%; background: #ddd; box-shadow: inset 0 1px 0 rgba(255,255,255,0.6); transition: transform 0.25s ease, background 0.25s ease; }
-                .tf-dot.active { background: linear-gradient(135deg,#6b46c1,#805ad5); transform: scale(1.25); box-shadow: 0 6px 18px rgba(99,102,241,0.28); }
-                @media (max-width: 768px) {
-                    .tf-timeline { display: none; }
-                }
+                .pt-card { padding: 12px; transition: transform 0.45s ease, box-shadow 0.3s ease; }
+                .pt-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
             `}</style>
         </Box>
     );

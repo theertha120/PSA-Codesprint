@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { FiSend, FiShare2, FiInfo } from "react-icons/fi";
 import NavBar from "./NavBar";
-import { generateResponse, determineRoute } from "./api";
+//import { generateResponse, determineRoute } from "./api";
 
 const gradientText = "linear-gradient(90deg, #2563EB 0%, #7C3AED 55%, #EC4899 100%)";
 const bubbleGradient = "linear-gradient(135deg, #2B2E8C 0%, #A83279 80%)";
@@ -138,7 +138,8 @@ export default function Chatbot() {
     const label =
       mode === "career" ? "Career Q&A" : mode === "learning" ? "Learning Help" : "Well-being";
     
-    const response = await generateResponse(text);
+    //const response = await generateResponse(text);
+    const response = `Noted the message in ${mode} mode: "${text}". Chatbot will be available soon...`;
     pushBot(`(${label}) ${response}`);
     setValue("");
   };
