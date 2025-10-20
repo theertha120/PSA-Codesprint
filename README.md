@@ -2,8 +2,8 @@
 
 * Aravind Thejus
 * Aravind Theertha
-* Govindaraj Roshni Daksha
-* Manikanda Durairaj Prathistta 
+* Aadith Yadav Govindarajan
+* Anirudh Yamunan Govindarajan
 
 ## Career Canvas
 
