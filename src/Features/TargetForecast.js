@@ -183,7 +183,7 @@ export const TargetForecast = () => {
                                     </CardHeader>
                                     <CardBody>
                                         <Text>{f.text || 'No suggestion available.'}</Text>
-                                        <Text fontWeight="bold" mt={4}>Percentage Fit: {f.percentage}%</Text>
+                                        {/*<Text fontWeight="bold" mt={4}>Percentage Fit: {f.percentage}%</Text>*/}
                                     </CardBody>
                                 </Card>
                             ))}
@@ -363,9 +363,9 @@ export const PotentialTargets = () => {
                 </Box>
             </HStack>
 
-        <Box display={{ md: 'flex' }} gap={6}>
-            <Box className="page-container" p={5} marginRight={10} marginLeft={10} align="center" alignItems="center" justifyContent="center">
-            <Grid templateColumns="repeat(3, 1fr)" gap={4}>
+        <Box display={{ md: 'flex' }} gap={6} justifyContent="center">
+            <Box className="page-container" p={5} textAlign="center" flex="1">
+                <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4} style={{ margin: "auto" }}>
                     {targetData.map((course, index) => (
                         <Box
                             key={index}
