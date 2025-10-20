@@ -103,7 +103,7 @@ export default function Chatbot() {
     setAwaitingName(true);
   };
 
-  const handleSend = () => {
+  const handleSend = async () => {
     const text = value.trim();
     if (!text) return;
     setHasStarted(true); // expands to chat on first send
@@ -137,7 +137,9 @@ export default function Chatbot() {
 
     const label =
       mode === "career" ? "Career Q&A" : mode === "learning" ? "Learning Help" : "Well-being";
-    pushBot(`(${label}) I noted your message: “${text}”. I’m a demo chatbot for now — responses coming soon.`);
+    
+    const response = await generateResponse(text);
+    pushBot(`(${label}) ${response}`);
     setValue("");
   };
 
