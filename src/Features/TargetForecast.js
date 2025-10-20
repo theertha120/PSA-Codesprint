@@ -14,7 +14,7 @@ import {
     CardBody,
     CardHeader,
 } from '@chakra-ui/react';
-import { generateResponse } from '../api';
+
 
 const HORIZONS = [
     { key: '6_months', label: '6 months' },
@@ -83,7 +83,13 @@ export const TargetForecast = () => {
                     selectedProfile
                 )}`;
 
-                const llmText = await generateResponse([{ isUser: true, text: prompt }]);
+                const llmText = JSON.stringify({
+                    "6_months": 'Focus on immediate skill consolidation and a high-impact project to showcase capability.',
+                    "1_year": 'Take ownership of end-to-end initiatives and pursue relevant certifications or courses.',
+                    "2_years": 'Broaden cross-functional exposure; lead a small team or program.',
+                    "5_years": 'Position for senior individual contributor or first-line management role with strategic responsibilities.',
+                    "10_years": 'Aim for senior leadership or subject-matter leadership with broad business impact.',
+                });
 
                 if (!mounted) return;
                 const parsed = parseLLMResult(llmText || '');
@@ -285,7 +291,13 @@ export const PotentialTargets = () => {
                     selectedProfile
                 )}`;
 
-                const llmText = await generateResponse([{ isUser: true, text: prompt }]);
+                const llmText = JSON.stringify({
+      "6_months": 'Focus on immediate skill consolidation and a high-impact project to showcase capability.',
+      "1_year": 'Take ownership of end-to-end initiatives and pursue relevant certifications or courses.',
+      "2_years": 'Broaden cross-functional exposure; lead a small team or program.',
+      "5_years": 'Position for senior individual contributor or first-line management role with strategic responsibilities.',
+      "10_years": 'Aim for senior leadership or subject-matter leadership with broad business impact.',
+    });
 
                 if (!mounted) return;
                 const parsed = parseLLMResult(llmText || '');
