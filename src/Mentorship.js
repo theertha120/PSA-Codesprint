@@ -8,6 +8,11 @@ import {
   Grid,
   HStack,
   Icon,
+  Input,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Select,
   SimpleGrid,
   Stack,
@@ -17,12 +22,6 @@ import {
   Textarea,
   useToast,
   VStack,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Portal,
-  useDisclosure,
 } from "@chakra-ui/react";
 import {
   FiCalendar,
@@ -55,16 +54,13 @@ const Card = ({ children, ...props }) => (
   </Box>
 );
 
-// --- Small date helpers
+// helpers
 function addDays(baseDate, numDays) {
   const d = new Date(baseDate);
   d.setDate(d.getDate() + numDays);
   return d;
 }
-const fmtDate = (d) =>
-  d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
-const fmtWeekday = (d) =>
-  d.toLocaleDateString(undefined, { weekday: "short" });
+const toISODate = (d) => d.toISOString().split("T")[0];
 
 export default function Mentorship() {
   const toast = useToast();
@@ -76,34 +72,33 @@ export default function Mentorship() {
 
   // Booking
   const today = useMemo(() => new Date(), []);
-  const days = useMemo(
-    () => Array.from({ length: 7 }, (_, i) => addDays(today, i)),
-    [today]
-  );
   const [selectedSlot, setSelectedSlot] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(toISODate(today));
+  const minDate = toISODate(today);
+  const maxDate = toISODate(addDays(today, 60)); // next ~2 months
 
   // Notes
   const [rawNotes, setRawNotes] = useState("");
   const [summary, setSummary] = useState("");
   const [isRec, setIsRec] = useState(false);
 
-  // Dropdown meetings
-  const [selectedMeeting, setSelectedMeeting] = useState(null);
-  const meetings = [
+  // Scheduled meetings dropdown
+  const [meetings, setMeetings] = useState([
     {
       id: "m1",
-      title: "1:1 with Aarav",
-      when: "Today 3:00 PM",
-      platform: "Google Meet",
+      title: "Mentor: Priya Tan",
+      when: "Tue, Oct 22 • 10:00",
+      platform: "Meet",
     },
     {
       id: "m2",
-      title: "Career Planning with Priya",
-      when: "Wed 4:30 PM",
-      platform: "Zoom",
+      title: "Mentor: Daniel Koh",
+      when: "Fri, Oct 25 • 14:00",
+      platform: "Teams",
     },
-  ];
-  const disclosure = useDisclosure(); // for Menu control
+  ]);
+  const [selectedMeetingId, setSelectedMeetingId] = useState(null);
+  const selectedMeeting = meetings.find((m) => m.id === selectedMeetingId) || null;
 
   const mentors = [
     { id: 1, name: "Aarav Mehta", skill: "Data Analysis", exp: 8, rating: 4.9 },
@@ -111,7 +106,6 @@ export default function Mentorship() {
     { id: 3, name: "Daniel Koh", skill: "Leadership", exp: 10, rating: 4.7 },
   ];
 
-  // Handlers
   const runMatching = () => setMatched(mentors.filter((m) => m.skill === selectedGap));
 
   const pickMentor = (m) => {
@@ -121,10 +115,37 @@ export default function Mentorship() {
 
   const confirmBooking = () => {
     if (!selectedSlot) {
-      toast({ title: "Pick a slot first", status: "info" });
+      toast({ title: "Pick a time slot first", status: "info" });
       return;
     }
-    toast({ title: "Booking confirmed!", status: "success" });
+    if (!selectedDate) {
+      toast({ title: "Pick a date first", status: "info" });
+      return;
+    }
+    const when = new Date(selectedDate);
+    const pretty = when.toLocaleDateString(undefined, {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+
+    const newItem = {
+      id: `new-${Date.now()}`,
+      title: chosenMentor ? `Mentor: ${chosenMentor.name}` : "Mentor session",
+      when: `${pretty} • ${selectedSlot}`,
+      platform: "Meet",
+    };
+
+    setMeetings((prev) => [newItem, ...prev]);
+    setSelectedMeetingId(newItem.id);
+
+    toast({
+      title: "Booking confirmed!",
+      description: `Your session is scheduled for ${pretty} at ${selectedSlot}. A confirmation email will be sent to you shortly.`,
+      status: "success",
+      duration: 5000,
+    });
   };
 
   const toggleRecording = () => {
@@ -139,16 +160,25 @@ export default function Mentorship() {
     setSummary("AI-generated summary (mock) based on your notes.");
   };
 
-  const onChooseMeeting = (m) => {
-    setSelectedMeeting(m);
-    disclosure.onClose(); // close the dropdown immediately
-    toast({ title: "Meeting selected", description: `${m.title} — ${m.when}`, status: "success" });
+  const handleCancel = () => {
+    if (!selectedMeeting) return;
+    setMeetings((prev) => prev.filter((m) => m.id !== selectedMeeting.id));
+    setSelectedMeetingId(null);
+    toast({ title: "Meeting canceled", status: "warning" });
+  };
+
+  const handleJoin = () => {
+    if (!selectedMeeting) return;
+    toast({
+      title: `Joining ${selectedMeeting.platform}`,
+      description: `${selectedMeeting.title} — ${selectedMeeting.when}`,
+      status: "success",
+    });
   };
 
   return (
     <>
       <NavBar />
-
       <Box minH="100vh" bg="white" color="gray.800" py={{ base: 8, md: 12 }}>
         <Container maxW="8xl">
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 6, md: 10 }}>
@@ -222,38 +252,62 @@ export default function Mentorship() {
               )}
             </Card>
 
-            {/* -------------------- Booking -------------------- */}
+            {/* -------------------- Booking (pink styled) -------------------- */}
             <Card>
               <HStack mb={4}>
                 <Icon as={FiCalendar} />
                 <Text fontSize="lg" fontWeight="bold">
                   Booking
                 </Text>
-                <Tag ml="auto" bg="blue.400" color="white" borderRadius="full">
+                <Tag ml="auto" bg="pink.400" color="white" borderRadius="full">
                   <TagLabel>Calendar</TagLabel>
                 </Tag>
               </HStack>
 
               <Text mb={5} fontSize="sm" opacity={0.9}>
-                Pick a date & time, then confirm your mentorship session.
+                Pick a <b>date</b> & <b>time</b>, then confirm your mentorship session.
               </Text>
 
-              <Grid templateColumns={`repeat(${days.length}, 1fr)`} gap={2} mb={3}>
-                {days.map((d) => (
-                  <Box key={d} textAlign="center">
-                    <Text fontSize="xs">{fmtWeekday(d)}</Text>
-                    <Text fontWeight="semibold">{fmtDate(d)}</Text>
-                  </Box>
-                ))}
-              </Grid>
+              {/* Date picker — pink styling */}
+              <HStack mb={4}>
+                <Input
+                  type="date"
+                  value={selectedDate}
+                  min={minDate}
+                  max={maxDate}
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                  bg="whiteAlpha.200"
+                  borderColor="pink.300"
+                  _hover={{ borderColor: "pink.400" }}
+                  _focus={{
+                    borderColor: "pink.400",
+                    boxShadow: "0 0 0 1px var(--chakra-colors-pink-400)",
+                  }}
+                  color="white"
+                  sx={{
+                    "::-webkit-calendar-picker-indicator": {
+                      filter: "invert(1) opacity(0.9)",
+                    },
+                  }}
+                />
+                <Text opacity={0.9} fontSize="sm">
+                  Up to 60 days ahead
+                </Text>
+              </HStack>
 
-              <VStack maxH="300px" overflowY="auto">
+              {/* Time slots — pink theme */}
+              <VStack maxH="300px" overflowY="auto" spacing={3}>
                 {["09:00", "10:00", "11:00", "14:00", "15:00"].map((t) => (
                   <Button
                     key={t}
                     w="full"
                     variant={selectedSlot === t ? "solid" : "outline"}
                     colorScheme="pink"
+                    borderColor="pink.300"
+                    _hover={{
+                      bg: selectedSlot === t ? "pink.600" : "pink.500",
+                      color: "white",
+                    }}
                     onClick={() => setSelectedSlot(t)}
                   >
                     {t}
@@ -282,7 +336,7 @@ export default function Mentorship() {
                 Use during your meeting to record notes and auto-generate summaries.
               </Text>
 
-              {/* 50/50 buttons */}
+              {/* 50/50 controls */}
               <Grid templateColumns="1fr 1fr" gap={3} mb={5}>
                 <Button colorScheme={isRec ? "red" : "pink"} onClick={toggleRecording}>
                   {isRec ? "Stop Recording" : "Start Recording"}
@@ -301,26 +355,21 @@ export default function Mentorship() {
                   minH="210px"
                   bg="whiteAlpha.200"
                 />
-                <Box
-                  bg="whiteAlpha.200"
-                  borderRadius="lg"
-                  p={3}
-                  minH="210px"
-                  whiteSpace="pre-wrap"
-                >
+                <Box bg="whiteAlpha.200" borderRadius="lg" p={3} minH="210px" whiteSpace="pre-wrap">
                   {summary || <Text opacity={0.7}>Your AI summary will appear here.</Text>}
                 </Box>
               </Grid>
 
               <Divider my={5} />
 
-              {/* Cancel / Save (50/50) — disabled until a meeting is selected */}
+              {/* Action row — disabled until a meeting is selected */}
               <Grid templateColumns="1fr 1fr" gap={3} mb={3}>
                 <Button
                   leftIcon={<FiX />}
                   variant="outline"
                   colorScheme="red"
                   isDisabled={!selectedMeeting}
+                  onClick={handleCancel}
                 >
                   Cancel Meeting
                 </Button>
@@ -329,9 +378,9 @@ export default function Mentorship() {
                 </Button>
               </Grid>
 
-              {/* Scheduled dropdown / Join (50/50) */}
-              <Grid templateColumns="1fr 1fr" gap={3} mb={2} alignItems="start">
-                <Menu isOpen={disclosure.isOpen} onClose={disclosure.onClose} placement="bottom-start" isLazy>
+              {/* Dropdown + Join */}
+              <Grid templateColumns="1fr 1fr" gap={3} alignItems="start">
+                <Menu>
                   <MenuButton
                     as={Button}
                     leftIcon={<FiList />}
@@ -339,30 +388,29 @@ export default function Mentorship() {
                     variant="outline"
                     colorScheme="blue"
                     w="full"
-                    fontSize="sm"
-                    onClick={disclosure.onOpen}
                   >
-                    {selectedMeeting ? `${selectedMeeting.title}` : "Scheduled Meetings"}
+                    {selectedMeeting ? "Change Meeting" : "Scheduled Meetings"}
                   </MenuButton>
-                  <Portal>
-                    <MenuList zIndex={20} minW="300px">
-                      {meetings.map((m) => {
-                        const isSel = selectedMeeting?.id === m.id;
-                        return (
-                          <MenuItem key={m.id} onClick={() => onChooseMeeting(m)}>
-                            <Box>
-                              <Text fontWeight="semibold">
-                                {m.title} {isSel && <Icon as={FiCheck} ml={1} />}
-                              </Text>
-                              <Text fontSize="sm" color="gray.600">
-                                {m.when} • {m.platform}
-                              </Text>
-                            </Box>
-                          </MenuItem>
-                        );
-                      })}
-                    </MenuList>
-                  </Portal>
+                  <MenuList bg="white" color="gray.800">
+                    {meetings.length === 0 ? (
+                      <MenuItem isDisabled>No scheduled meetings</MenuItem>
+                    ) : (
+                      meetings.map((m) => (
+                        <MenuItem
+                          key={m.id}
+                          onClick={() => setSelectedMeetingId(m.id)}
+                          icon={selectedMeetingId === m.id ? <FiCheck /> : <span />}
+                        >
+                          <Box>
+                            <Text fontWeight="semibold">{m.title}</Text>
+                            <Text fontSize="sm" color="gray.600">
+                              {m.when} • {m.platform}
+                            </Text>
+                          </Box>
+                        </MenuItem>
+                      ))
+                    )}
+                  </MenuList>
                 </Menu>
 
                 <Button
@@ -370,6 +418,7 @@ export default function Mentorship() {
                   colorScheme="green"
                   w="full"
                   isDisabled={!selectedMeeting}
+                  onClick={handleJoin}
                 >
                   Join Meeting
                 </Button>
@@ -381,4 +430,3 @@ export default function Mentorship() {
     </>
   );
 }
-
