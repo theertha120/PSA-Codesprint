@@ -1,11 +1,11 @@
-# The SPRiNTs
+# ATTAboy
 
-* Marwah Nikita 
+* Aravind Thejus
 * Aravind Theertha
 * Govindaraj Roshni Daksha
 * Manikanda Durairaj Prathistta 
 
-## Talent Harbour
+## Career Canvas
 
 In the project directory, you can run:
 
@@ -23,7 +23,4 @@ You may also see any lint errors in the console.
 
 ## Setup
 
-For testing you can use the provided accounts or sign up using any email.
-
-**email: roshni@gmail.com**\
-**password: 123456**
+For testing you can use sign up using any email and log in. Happy testing!
