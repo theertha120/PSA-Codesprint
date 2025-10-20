@@ -2,8 +2,8 @@
 
 * Aravind Thejus
 * Aravind Theertha
-* Aadith Yadav Govindarajan
-* Anirudh Yamunan Govindarajan
+* Govindarajan Aadith Yadav 
+* Govindarajan Anirudh Yamunan 
 
 ## Career Canvas
 
