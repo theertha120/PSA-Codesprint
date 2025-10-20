@@ -1,3 +1,8 @@
+import OpenAI from 'openai';
+// import dotenv from 'dotenv';
+
+// dotenv.config();
+
 // This module is used both in Node (server) and the browser (client). Avoid importing
 // Node-only modules (dotenv, fs, path, os) at top-level so webpack won't attempt to
 // bundle them for the browser. Instead, dynamically import OpenAI/dotenv only when
@@ -45,9 +50,9 @@ export async function generateResponse(messages) {
   }
 
   // Node environment: dynamically import Node-only modules so bundlers won't include them.
-  const OpenAI = (await import('openai')).default;
-  const dotenv = await import('dotenv');
-  dotenv.config();
+  // const OpenAI = (await import('openai')).default;
+  // const dotenv = await import('dotenv');
+  // dotenv.config();
 
   const client = new OpenAI({
     apiKey: process.env.AZURE_OPENAI_API_KEY_PRIMARY,

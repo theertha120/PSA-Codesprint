@@ -19,9 +19,14 @@ import {
     useColorModeValue,
     ScaleFade,
     Progress,
+    Tabs,
+    TabList,
+    TabPanels,
+    Tab,
+    TabPanel,
 } from '@chakra-ui/react';
 import { CheckCircleIcon } from '@chakra-ui/icons';
-import { TargetForecast } from './TargetForecast';
+import { TargetForecast, PotentialTargets } from './TargetForecast';
 
 
 export const TargetCard = () => {
@@ -84,13 +89,26 @@ export const TargetCard = () => {
                 <ModalOverlay />
                 <ModalContent bg={useColorModeValue('white', 'gray.800')} borderRadius="lg" boxShadow="lg">
                     <ModalHeader>
-
                         <Heading size="lg">Generate Targets</Heading>
                         <ModalCloseButton />
-
                     </ModalHeader>
                     <ModalBody>
-                        <TargetForecast />
+                        <Tabs isFitted variant="enclosed" size="md">
+                            <TabList mb="1em">
+                                <Tab>Target Forecast</Tab>
+                                <Tab>Potential Targets</Tab>
+                            </TabList>
+
+                            <TabPanels>
+                                <TabPanel>
+                                    <TargetForecast />
+                                </TabPanel>
+
+                                <TabPanel>
+                                    <PotentialTargets />
+                                </TabPanel>
+                            </TabPanels>
+                        </Tabs>
                     </ModalBody>
                     <ModalFooter>
 

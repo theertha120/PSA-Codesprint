@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { FiSend, FiShare2, FiInfo } from "react-icons/fi";
 import NavBar from "./NavBar";
+import { generateResponse, determineRoute } from "./api";
 
 const gradientText = "linear-gradient(90deg, #2563EB 0%, #7C3AED 55%, #EC4899 100%)";
 const bubbleGradient = "linear-gradient(135deg, #2B2E8C 0%, #A83279 80%)";
